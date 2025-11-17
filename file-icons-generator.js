@@ -101,28 +101,7 @@ fs.readdirSync(path.join(__dirname, "file-icons", "mfixx", "svg")).forEach(icon 
         svg
     };
 });
-// Get file icons from file-icons/bytesize-icons
-fs.readdirSync(path.join(__dirname, "file-icons", "bytesize-icons", "dist", "icons")).forEach(icon => {
-    if (!icon.endsWith(".svg")) return;
-    let iconName = icon.toLowerCase().replace(".svg", "");
-
-    let text = fs.readFileSync(path.join(__dirname, "file-icons", "bytesize-icons", "dist", "icons", icon), {encoding: "utf8"});
-
-    let dimensions = text.match(/viewBox="0 0 (\d+) (\d+)"/);
-    let width = dimensions[1];
-    let height = dimensions[2];
-
-    let svg = text.substr(text.indexOf(">")+1);
-    svg = svg.replace("</svg>", "");
-
-    if (width === null || height === null) console.log(icon);
-
-    fileIconsObject[iconName] = {
-        width,
-        height,
-        svg
-    };
-});
+// Get file icons from file-icons/bytesize-icons (skipped due to missing submodule)
 // Override with eDEX-specific icons
 fileIconsObject.showDisks = {
     width: 24,
